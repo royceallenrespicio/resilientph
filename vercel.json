@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/pagasa",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/phivolcs",
+      "schedule": "5 0 * * *"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+ignoredBuiltDependencies:
+  - "@vgpu/adapter-node"
+  - "unrs-resolver"
+  - "webgpu"

@@ -1,0 +1,314 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./transitions.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-geist-pixel-square);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-alert: var(--alert);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-pulse-green: alert-pulse 2s infinite ease-in-out;
+  --animate-pulse-amber: alert-pulse-warn 2s infinite ease-in-out;
+
+  @keyframes alert-pulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+    }
+
+    50% {
+      transform: scale(1.2);
+      box-shadow: 0 0 8px 4px rgba(34, 197, 94, 0);
+    }
+  }
+
+  @keyframes alert-pulse-warn {
+
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
+    }
+
+    50% {
+      transform: scale(1.2);
+      box-shadow: 0 0 8px 4px rgba(245, 158, 11, 0);
+    }
+  }
+}
+
+:root {
+  --background: oklch(96.48% 0.0127 86.83);
+  --foreground: oklch(14.1% 0.005 285.823);
+  --card: oklch(100% 0 0);
+  --card-foreground: oklch(14.1% 0.005 285.823);
+  --popover: oklch(100% 0 0);
+  --popover-foreground: oklch(14.1% 0.005 285.823);
+  --primary: oklch(14.1% 0.005 285.823);
+  --primary-foreground: oklch(98.5% 0 0);
+  --secondary: oklch(94% 0.008 86.83);
+  --secondary-foreground: oklch(14.1% 0.005 285.823);
+  --muted: oklch(94% 0.008 86.83);
+  --muted-foreground: oklch(55.2% 0.016 285.938);
+  --accent: oklch(94% 0.008 86.83);
+  --accent-foreground: oklch(14.1% 0.005 285.823);
+  --destructive: oklch(57.7% 0.245 27.325);
+  --border: oklch(91% 0.008 86.83);
+  --input: oklch(91% 0.008 86.83);
+  --ring: oklch(62.3% 0.214 259.815);
+  --chart-1: oklch(64.6% 0.222 41.116);
+  --chart-2: oklch(62.7% 0.194 149.214);
+  --chart-3: oklch(70.5% 0.213 47.604);
+  --chart-4: oklch(62.3% 0.214 259.815);
+  --chart-5: oklch(54.6% 0.245 262.881);
+  --radius: 0.65rem;
+  --sidebar: oklch(96.48% 0.0127 86.83);
+  --sidebar-foreground: oklch(14.1% 0.005 285.823);
+  --sidebar-primary: oklch(14.1% 0.005 285.823);
+  --sidebar-primary-foreground: oklch(98.5% 0 0);
+  --sidebar-accent: oklch(92.5% 0.01 86.83);
+  --sidebar-accent-foreground: oklch(14.1% 0.005 285.823);
+  --sidebar-border: oklch(91% 0.008 86.83);
+  --sidebar-ring: oklch(62.3% 0.214 259.815);
+  --success: oklch(62.7% 0.194 149.214);
+  --warning: oklch(70.5% 0.213 47.604);
+  --info: oklch(62.3% 0.214 259.815);
+  --alert: oklch(57.7% 0.245 27.325);
+}
+
+.dark {
+  --background: oklch(14.5% 0 0);
+  --foreground: oklch(98.5% 0 0);
+  --card: oklch(20.5% 0 0);
+  --card-foreground: oklch(98.5% 0 0);
+  --popover: oklch(20.5% 0 0);
+  --popover-foreground: oklch(98.5% 0 0);
+  --primary: oklch(92.2% 0 0);
+  --primary-foreground: oklch(14.5% 0 0);
+  --secondary: oklch(26.9% 0 0);
+  --secondary-foreground: oklch(98.5% 0 0);
+  --muted: oklch(26.9% 0 0);
+  --muted-foreground: oklch(70.8% 0 0);
+  --accent: oklch(26.9% 0 0);
+  --accent-foreground: oklch(98.5% 0 0);
+  --destructive: oklch(70.4% 0.191 22.216);
+  --border: oklch(100% 0 0 / 0.1);
+  --input: oklch(100% 0 0 / 0.15);
+  --ring: oklch(55.6% 0 0);
+  --chart-1: oklch(70.5% 0.213 47.604);
+  --chart-2: oklch(72.3% 0.219 149.579);
+  --chart-3: oklch(85.2% 0.199 91.936);
+  --chart-4: oklch(70.7% 0.165 254.624);
+  --chart-5: oklch(62.3% 0.214 259.815);
+  --sidebar: oklch(14.5% 0 0);
+  --sidebar-foreground: oklch(98.5% 0 0);
+  --sidebar-primary: oklch(92.2% 0 0);
+  --sidebar-primary-foreground: oklch(14.5% 0 0);
+  --sidebar-accent: oklch(23% 0 0);
+  --sidebar-accent-foreground: oklch(98.5% 0 0);
+  --sidebar-border: oklch(100% 0 0 / 0.1);
+  --sidebar-ring: oklch(55.6% 0 0);
+  --success: oklch(72.3% 0.219 149.579);
+  --warning: oklch(75% 0.183 55.934);
+  --info: oklch(70.7% 0.165 254.624);
+  --alert: oklch(70.4% 0.191 22.216);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  html {
+    @apply font-sans;
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility font-pixel {
+  font-family: var(--font-pixel), "Geist Mono", ui-monospace, monospace;
+}
+
+@utility text-micro {
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@utility bg-halftone {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 9px 9px;
+}
+
+@utility shadow-bryl {
+  box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.25);
+}
+
+/* Leaflet & Map Theme Styling */
+.leaflet-container {
+  isolation: isolate;
+  z-index: 0 !important;
+  background-color: var(--background) !important;
+  font-family: var(--font-sans), sans-serif !important;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--card) !important;
+  color: var(--card-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.35) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px !important;
+  line-height: 1.5 !important;
+  font-family: var(--font-sans), sans-serif !important;
+}
+
+.leaflet-popup-tip-container {
+  overflow: visible !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--card) !important;
+  border-left: 1px solid var(--border) !important;
+  border-top: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+.leaflet-popup-close-button {
+  color: var(--muted-foreground) !important;
+  font-size: 16px !important;
+  padding: 4px 8px !important;
+  right: 6px !important;
+  top: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: var(--foreground) !important;
+  background: transparent !important;
+}
+
+.leaflet-tooltip {
+  background: var(--card) !important;
+  color: var(--card-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.3) !important;
+  font-family: var(--font-sans), sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 4px 8px !important;
+}
+
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  border-top-color: var(--card) !important;
+}
+
+/* MapLibre GL Legacy Fallback Popup Styling */
+.maplibregl-popup-content,
+.mapboxgl-popup-content {
+  background: var(--card) !important;
+  backdrop-filter: blur(12px) !important;
+  color: var(--card-foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15) !important;
+  padding: 14px 18px !important;
+  font-family: var(--font-sans), sans-serif !important;
+}
+
+.maplibregl-popup-tip,
+.mapboxgl-popup-tip {
+  border-top-color: var(--card) !important;
+  border-bottom-color: var(--card) !important;
+}
+
+.maplibregl-popup-close-button,
+.mapboxgl-popup-close-button {
+  color: var(--muted-foreground) !important;
+  font-size: 16px !important;
+  padding: 4px 8px !important;
+  right: 4px !important;
+  top: 4px !important;
+  border-radius: 9999px !important;
+  transition: background 0.2s !important;
+}
+
+.maplibregl-popup-close-button:hover,
+.mapboxgl-popup-close-button:hover {
+  background: var(--accent) !important;
+  color: var(--foreground) !important;
+}
