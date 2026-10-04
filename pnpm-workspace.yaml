@@ -1,4 +1,4 @@
-onlyBuiltDependencies:
-  - '@vgpu/adapter-node'
-  - unrs-resolver
-  - webgpu
+allowBuilds:
+  '@vgpu/adapter-node': true
+  unrs-resolver: true
+  webgpu: true
