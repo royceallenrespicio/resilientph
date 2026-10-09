@@ -68,7 +68,7 @@ Verify:
 - All 11 active skills are present and clickable.
 - All security and architectural constraints are present.
 
-- [ ] **Step 5: Commit changes**
+- [x] **Step 5: Commit changes**
 
 ```bash
 git add AGENTS.md
