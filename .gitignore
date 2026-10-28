@@ -43,3 +43,9 @@ next-env.d.ts
 
 # scraper cache
 lib/scraper/cache/
+
+# local-only folders
+/docs/
+/_artifact_build/
+/scratch/
+/scripts/

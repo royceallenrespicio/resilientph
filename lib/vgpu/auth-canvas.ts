@@ -5,6 +5,7 @@
 
 import { clock, effect, frameLoop, init, surface, sampler } from "vgpu"
 import type { FrameLoopHandle, Surface, Gpu } from "vgpu"
+import { prepareShader } from "@vgpu/wgsl/prepare"
 import { PH_HALFTONE_WGSL } from "./ph-shader"
 import { createPhilippineMaskCanvas } from "./ph-mask"
 
@@ -161,7 +162,8 @@ export async function startAuthWebGpu(
       magFilter: "linear",
     })
 
-    const phEffect = effect(gpu, PH_HALFTONE_WGSL, {
+    const phShader = prepareShader(PH_HALFTONE_WGSL)
+    const phEffect = effect(gpu, phShader, {
       label: "resilientph-philippine-halftone",
       set: {
         params: {
