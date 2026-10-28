@@ -43,10 +43,11 @@ Use this skill for any deployment, pre-release audit, or production hardening ta
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY` (server-only)
 - `GEMINI_API_KEY`
-- Optional: `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
+- Optional: `GEMINI_MODEL` (defaults to `gemini-3.1-flash-lite`), `CRON_SECRET`, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_CARTO_API_KEY`, `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`
 
 ### Acceptance Checklist
 
+- [ ] Node.js runtime meets baseline (`>=24.0.0` LTS).
 - [ ] `.env.example` exists and documents required/optional keys.
 - [ ] No insecure TLS bypass in production paths.
 - [ ] Server-only secrets are not referenced in client bundles.

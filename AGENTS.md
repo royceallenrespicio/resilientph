@@ -32,10 +32,10 @@ Workspace skills live under `.agents/skills/`. When skills overlap, follow this 
 
 - **Commands:** `pnpm dev` (server), `pnpm build` (build), `pnpm lint` (linter). Use `pnpm` exclusively.
 - **Path Alias:** `@/*` maps to `./*`.
-- **Core:** Next.js 16 (App Router), React 19, TypeScript.
-- **Styling & UI:** Tailwind CSS v4, Base UI, Radix UI, shadcn/ui (58 primitives in `components/ui/`), Framer Motion (`motion/react`), Lucide React (no emoji in UI).
+- **Core:** Next.js 16 (App Router), React 19, TypeScript, Node.js (`>=24.0.0` LTS).
+- **Styling & UI:** Tailwind CSS v4, Base UI, Radix UI, shadcn/ui (65 primitives in `components/ui/`), Motion (`motion/react`), Lucide React (no emoji in UI).
 - **Database & Auth:** Supabase (`@supabase/supabase-js`, `@supabase/ssr`).
-- **AI & Integrations:** LangChain (`@langchain/core`, `@langchain/google`), Leaflet, Open-Meteo (`lib/weather/meteo.ts`), Upstash Redis.
+- **AI & Integrations:** LangChain (`@langchain/core`, `@langchain/google`), Leaflet, Open-Meteo (`lib/weather/meteo.ts`), Upstash Redis, WebGPU (`vgpu`, `@vgpu/wgsl`).
 
 ---
 
@@ -46,7 +46,7 @@ Keep files focused (<300 lines). Decompose large components. Follow strict separ
 | Directory | Responsibility | Constraint |
 |---|---|---|
 | `app/` | Thin route entrypoints (`layout.tsx`, `page.tsx`) | Metadata export + single client component import only. No business logic. |
-| `app/(portal)/` | Portal route group with shared sidebar shell | Delegates layout to `components/ui/PortalProviders.tsx`. |
+| `app/(portal)/` | Portal route group with shared sidebar shell | Delegates layout to `components/ui/portal-providers.tsx`. |
 | `app/api/` | Route handlers (rate-limited, structured JSON) | Always wrap with `handleApiError()`. User-input routes use `checkRateLimit()`. |
 | `components/<domain>/` | Feature UI (`auth`, `chat`, `emergency`, `home`, `map`, `pagasa`, `profile`) | Pure UI and view logic. Never define custom hooks here. |
 | `components/ui/` | Reusable primitives & shared shells | Generic primitives only. Check here before creating new buttons/dialogs. |
@@ -72,7 +72,7 @@ Keep files focused (<300 lines). Decompose large components. Follow strict separ
 
 1. **Theme Tokens Only:** Never hardcode hex/oklch colors. Use theme tokens in `globals.css` (`bg-background`, `text-foreground`, `border-border`, `bg-card`, `text-primary`). Default is dark-themed.
 2. **Typography:** Geist (primary sans), Geist Mono (code), Geist Pixel (headings).
-3. **Animations:** Framer Motion (`motion/react`) for micro-interactions; React 19 `<ViewTransition>` (`transitions.css`) for route transitions.
+3. **Animations:** Motion (`motion/react`) for micro-interactions; React 19 `<ViewTransition>` (`transitions.css`) for route transitions.
 4. **Images:** `next/image` with `unoptimized` for dynamic external URLs. No broken/placeholder images.
 5. **No Emojis in UI:** Use Lucide React icons exclusively.
 

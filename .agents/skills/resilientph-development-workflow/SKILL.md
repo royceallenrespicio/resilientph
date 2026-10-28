@@ -16,7 +16,7 @@ This skill defines strict codebase organization rules, modularity practices, nam
 ## 🎨 1. UI Component Reuse (`components/ui`)
 
 ### The Rule: Check `components/ui` First!
-You must **NEVER** write a custom primitive element (buttons, cards, dialogs, inputs, sheets, dropdowns, calendars, etc.) from scratch using raw divs/inputs. 58 premium components are pre-configured in `components/ui/`.
+You must **NEVER** write a custom primitive element (buttons, cards, dialogs, inputs, sheets, dropdowns, calendars, etc.) from scratch using raw divs/inputs. 65 UI primitives are pre-configured in `components/ui/`.
 
 *   **Actionable Step:** Before writing any interactive UI element or card, run a search/list of `components/ui/` to locate the corresponding component.
 *   **Theme Integration:** Rely exclusively on Tailwind v4 CSS theme tokens defined in `globals.css` (e.g., `bg-background`, `text-foreground`, `bg-card`, `text-primary`, `border-border`) rather than hardcoding hex colors or raw oklch.
@@ -33,7 +33,7 @@ You must **NEVER** write a custom primitive element (buttons, cards, dialogs, in
 - Popovers / Tooltips: `components/ui/popover.tsx` or `components/ui/tooltip.tsx`
 - Badge: `components/ui/badge.tsx`
 - Error Boundary: `components/ui/error-boundary.tsx`
-- Portal Layout Shell: `components/ui/PortalProviders.tsx`
+- Portal Layout Shell: `components/ui/portal-providers.tsx`
 - Portal Header: `components/ui/portal-header.tsx`
 
 ---
@@ -49,7 +49,7 @@ Do **NOT** dump React code or custom business logic inside the Next.js `app/` ro
 | **Route/Page entrypoints** | `app/<route>/page.tsx` (thin: metadata + single component import) | Business logic in `page.tsx` |
 | **Page-Specific Components** | `components/<domain>/` (e.g. `components/chat/`, `components/map/`, `components/home/`, `components/pagasa/`, `components/emergency/`, `components/auth/`) | Inside `app/<route>/` or flat `components/` |
 | **Reusable UI Primitives** | `components/ui/` | Custom elements inside feature folders |
-| **Shared Layout Shells** | `components/ui/` (e.g. `PortalProviders.tsx`) | In a specific domain folder |
+| **Shared Layout Shells** | `components/ui/` (e.g. `portal-providers.tsx`) | In a specific domain folder |
 | **Custom Hooks** | `hooks/<domain>/` (e.g. `hooks/chat/`, `hooks/map/`, `hooks/home/`) | In the same file as a component, inside `app/`, or inside `components/` |
 | **Pure Data Configs / Styles** | `lib/<domain>/` (e.g. `lib/map/layer-styles.ts`) | Inside `components/` |
 | **API / Global Utils / Clients** | `lib/` (e.g. `lib/weather/meteo.ts`, `lib/supabase/`, `lib/api/`) | Inside `hooks/` or inside component files |
@@ -111,8 +111,8 @@ Production-ready code requires proper error handling at every layer:
 
 1. **Icons:** Use Lucide React (`lucide-react`) exclusively. Never use emoji characters (⚡🧹) in rendered UI.
 2. **Images:** Use `next/image` for all images. Use `unoptimized` prop for dynamic/external URLs not in `remotePatterns`.
-3. **Animations:** Use Framer Motion (`motion/react`) for component animations. Use React 19 `<ViewTransition>` for route transitions.
-4. **Typography:** Geist (sans-serif) as primary font, Geist Mono for code/data.
+3. **Animations:** Use Motion (`motion/react`) for component animations. Use React 19 `<ViewTransition>` for route transitions.
+4. **Typography:** Geist (sans-serif) as primary font, Geist Mono for code/data, Geist Pixel for headings.
 5. **Accessibility:** All form inputs must have labels (use `sr-only` for visually hidden). Interactive elements need `aria-label` when text is not self-descriptive.
 
 ---
